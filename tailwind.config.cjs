@@ -12,6 +12,15 @@ module.exports = {
                 red_error: "#CC0000",
             },
         },
+        fontFamily: {
+            'ClashDisplay-Variable': ['ClashDisplay-Variable', 'sans-serif'],
+            'ClashDisplay-Extralight': ['ClashDisplay-Extralight', 'sans-serif'],
+            'ClashDisplay-Light': ['ClashDisplay-Light', 'sans-serif'],
+            'ClashDisplay-Regular': ['ClashDisplay-Regular', 'sans-serif'],
+            'ClashDisplay-Medium': ['ClashDisplay-Medium', 'sans-serif'],
+            'ClashDisplay-Semibold': ['ClashDisplay-Semibold', 'sans-serif'],
+            'ClashDisplay-Bold': ['ClashDisplay-Bold', 'sans-serif'],
+        },
 	},
 	plugins: [],
 }

@@ -7,15 +7,17 @@ export const languages = {
   
   export const ui = {
     en: {
-        'title' : 'Portfolio - Verstrepen Mathis',
-        'desc': 'Web developer & data scientist',
-        'button.text': 'discover',
-        'button.url': '/discover',
+        'home.title' : 'Portfolio - Verstrepen Mathis',
+        'home.desc.web': 'Web developer',
+        'home.desc.data': 'data scientist',
+        'home.button.text': 'discover',
+        'home.button.url': '/discover',
     },
     fr: {
-        'title' : 'Portfolio - Verstrepen Mathis',
-        'desc': 'Web développeur & data scientist',
-        'button.text': 'découvrir',
-        'button.url': '/discover',
+        'home.title' : 'Portfolio - Verstrepen Mathis',
+        'home.desc.web': 'Web développeur',
+        'home.desc.data': 'data scientist',
+        'home.button.text': 'découvrir',
+        'home.button.url': '/discover',
     },
   } as const;
