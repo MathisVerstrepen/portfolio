@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 
 import { useTranslations } from "../../i18n/utils";
+import MoreButton from "../../components/MoreButton.astro";
 
 export function getStaticPaths() {
   return [{ params: { lang: "en" } }, { params: { lang: "fr" } }];
@@ -12,18 +13,39 @@ const t = useTranslations(lang as "en" | "fr");
 ---
 
 <Layout title={t("home.title")}>
-  <main class="h-full w-1/2 flex items-center justify-center z-10 absolute">
-    <div class="h-[95%] w-[94%] bg-ghost_white bg-opacity-[0.033] border-radial-box grid grid-rows-[80%_20%] p-20">
-        test
+  <main class="h-full w-full flex items-center justify-center z-10 absolute">
+    <div class="h-[95%] w-[48%] bg-ghost_white bg-opacity-[0.033] border-radial-box grid grid-rows-[30%_50%] p-20">
+      <h1 class="font-ClashDisplay-Semibold text-ghost_white text-4xl self-center">{t("about.title")}</h1>
+      <div class="h-full flex flex-col justify-evenly">
+        <p class="font-ClashDisplay-Regular text-ghost_white text-lg">{t("about.desc.1")}</p>
+        <p class="font-ClashDisplay-Regular text-ghost_white text-lg">
+          {t("about.desc.2")}
+          <span class="text-scarlet">{t("about.desc.3")}</span>
+          {t("about.desc.4")}
+        </p>
+        <p class="font-ClashDisplay-Regular text-ghost_white text-lg">
+          {t("about.desc.5")}
+          <span class="text-scarlet">{t("about.desc.6")}</span>
+          {t("about.desc.7")}
+        </p>
+      </div>
+    </div>
+    <div class="h-[95%] w-[49%] grid grid-rows-[30%_50%] p-20">
+      <h1 class="font-ClashDisplay-Semibold text-ghost_white text-4xl self-center">{t("more.title")}</h1>
+      <div class="h-full flex flex-col justify-evenly">
+        <MoreButton icon={t("more.icon.1")} text={t("more.text.1")} />
+        <MoreButton icon={t("more.icon.2")} text={t("more.text.2")} />
+        <MoreButton icon={t("more.icon.3")} text={t("more.text.3")} />
+      </div>
     </div>
   </main>
-</Layout>
 
-<style>
-  .border-radial-box {
-    border-style: solid;
-    border-width: 4px;
-    border-image: radial-gradient(rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 105%) 1;
-    border-radius: 10px;
-  }
-</style>
+  <style>
+    .border-radial-box {
+      border-style: solid;
+      border-width: 4px;
+      border-image: radial-gradient(rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 105%) 1;
+      border-radius: 10px;
+    }
+  </style>
+</Layout>
