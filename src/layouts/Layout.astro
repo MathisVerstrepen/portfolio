@@ -35,4 +35,19 @@ const { title } = Astro.props;
 #circle2 {
     background: radial-gradient(#1FAEFF, transparent 70%);
 }
+
+.border-radial-box {
+border-style: solid;
+border-width: 4px;
+border-image: radial-gradient(rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 105%) 1;
+border-radius: 10px;
+}
+
+li {
+    list-style-type: disc;
+}
+
+small {
+    opacity: 0.75;
+}
 </style>

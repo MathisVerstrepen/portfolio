@@ -1,31 +1,30 @@
 ---
-import { Icon } from 'astro-icon';
+import { Icon } from "astro-icon";
 
 const { lang } = Astro.params;
 
-const { icon, text } = Astro.props;
-
+const { icon, text, url } = Astro.props;
 ---
 
 <main>
-    <a class="flex space-x-4 items-center" role="button" href=`/${lang}`>
-        <Icon name={icon} class="text-scarlet h-7"/>
-        <p class="font-ClashDisplay-Regular text-ghost_white text-lg">{text}</p>            
-    </a>
+  <a class="flex space-x-4 items-center" role="button" href=`/${lang}/${url}`>
+    <Icon name={icon} class="text-scarlet h-7" />
+    <p class="font-ClashDisplay-Regular text-ghost_white text-lg">{text}</p>
+  </a>
 </main>
 
 <style>
-a {
-  background: linear-gradient(to right, rgb(255 51 31), rgb(255 51 31) 50%, rgb(251 251 255) 50%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% 100%;
-  background-position: 100%;
-  transition: background-position 350ms ease-in-out;
-}
+  a {
+    background: linear-gradient(to right, rgb(255 51 31), rgb(255 51 31) 50%, rgb(251 251 255) 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 500ms ease-in-out;
+  }
 
-a:hover {
-  background-position: 0 100%;
-}
+  a:hover {
+    background-position: 0 100%;
+  }
 </style>

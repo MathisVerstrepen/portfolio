@@ -33,19 +33,10 @@ const t = useTranslations(lang as "en" | "fr");
     <div class="h-[95%] w-[49%] grid grid-rows-[30%_50%] p-20">
       <h1 class="font-ClashDisplay-Semibold text-ghost_white text-4xl self-center">{t("more.title")}</h1>
       <div class="h-full flex flex-col justify-evenly">
-        <MoreButton icon={t("more.icon.1")} text={t("more.text.1")} />
-        <MoreButton icon={t("more.icon.2")} text={t("more.text.2")} />
-        <MoreButton icon={t("more.icon.3")} text={t("more.text.3")} />
+        <MoreButton icon={t("more.icon.1")} text={t("more.text.1")} url={t("more.url.1")} />
+        <MoreButton icon={t("more.icon.2")} text={t("more.text.2")} url={t("more.url.2")} />
+        <MoreButton icon={t("more.icon.3")} text={t("more.text.3")} url={t("more.url.3")} />
       </div>
     </div>
   </main>
-
-  <style>
-    .border-radial-box {
-      border-style: solid;
-      border-width: 4px;
-      border-image: radial-gradient(rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 105%) 1;
-      border-radius: 10px;
-    }
-  </style>
 </Layout>

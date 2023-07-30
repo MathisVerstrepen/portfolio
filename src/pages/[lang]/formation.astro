@@ -1,0 +1,78 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Icon } from "astro-icon";
+
+import { useTranslations } from "../../i18n/utils";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "fr" } }];
+}
+const { lang } = Astro.params;
+
+const t = useTranslations(lang as "en" | "fr");
+---
+
+<Layout title={t("home.title")}>
+  <main class="h-full w-full z-10 absolute flex">
+    <section class="w-1/3 h-full grid grid-rows-[10%_90%] grid-cols-[100%] p-10">
+      <h1 class="text-ghost_white font-ClashDisplay-Semibold text-3xl self-center">{t("formation.academic.title")}</h1>
+      <div class="grid grid-flow-row grid-rows-[fit-content(100%)] grid-cols-[10%_80%] h-fit">
+        {
+          [1, 2, 3].map((n: number) => {
+            return (
+              <>
+                <div class="h-full w-6 flex flex-col items-center">
+                    <span class="h-6 w-6 shrink-0 bg-ghost_white bg-opacity-10 border-ghost_white border-opacity-50 border-2 rounded-full" />
+                    { n < 3 && <span class="w-1 h-full bg-ghost_white bg-opacity-50"></span>}    
+                </div>
+                
+                <div class="mb-5">
+                  <div class="text-scarlet font-ClashDisplay-Semibold text-xl">
+                    {t(`formation.academic.year.${n as 1 | 2 | 3}`)}
+                  </div>
+                  <div class="bg-ghost_white bg-opacity-[0.033] border-radial-box p-5 border-4 rounded-tl-none mt-2">
+                    <h2 class="text-ghost_white font-ClashDisplay-Semibold text-2xl">
+                      {t(`formation.academic.place.${n as 1 | 2 | 3}`)}
+                    </h2>
+                    <h4 class="text-ghost_white font-ClashDisplay-Regular text-base opacity-75">
+                      {t(`formation.academic.sub.${n as 1 | 2 | 3}`)}
+                    </h4>
+                    <ul
+                      class="text-ghost_white font-ClashDisplay-Regular mt-4 pl-4"
+                      set:html={t(`formation.academic.desc.${n as 1 | 2 | 3}`)}
+                    />
+                  </div>
+                </div>
+              </>
+            );
+          })
+        }
+      </div>
+    </section>
+    <section class="w-1/3 h-full grid grid-rows-[10%_90%] p-10">
+        <h1 class="text-ghost_white font-ClashDisplay-Semibold text-3xl self-center">{t("formation.lang.title")}</h1>
+        <div class="flex flex-col mt-10">
+            {
+                [1, 2, 3].map((n: number) => {
+                return (
+                    <div class="mb-10 flex flex-col space-y-4">
+                        <div class="flex space-x-4">
+                            <Icon name={t(`formation.lang.${n as 1 | 2 | 3}.icon`)} class="h-7 rounded" />
+                            <h3 class="font-ClashDisplay-Semibold text-ghost_white text-xl">{t(`formation.lang.${n as 1 | 2 | 3}`)}</h3>                        
+                        </div>
+
+                        <div>
+                            <div class="font-ClashDisplay-Regular text-ghost_white" set:html={t(`formation.lang.${n as 1 | 2 | 3}.desc1`)}/>
+                            <ul class="font-ClashDisplay-Regular text-ghost_white ml-6" set:html={t(`formation.lang.${n as 2}.desc2`)}/>                            
+                        </div>
+                    </div>
+                );
+                })
+            }            
+        </div>
+
+    </section>
+  </main>
+</Layout>
+
+<style></style>
