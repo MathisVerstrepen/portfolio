@@ -1,0 +1,17 @@
+---
+import Icon from "astro-icon";
+
+const { lang } = Astro.params;
+---
+
+<div class="absolute top-10 right-12 flex items-center">
+  <a
+    class="font-ClashDisplay-Semibold text-ghost_white text-xl text-opacity-50 hover:text-opacity-80 duration-300 z-50"
+    role="button"
+    href=`/${lang}/contact`
+  >
+    contact
+  </a>
+  <span class="h-6 w-[2px] bg-ghost_white bg-opacity-50 rounded mx-8"></span>
+  <Icon name="world" class="h-6 w-6 text-ghost_white opacity-50 hover:opacity-80 duration-300 z-50" />
+</div>

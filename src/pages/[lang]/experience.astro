@@ -1,5 +1,5 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import Layout_Subpage from "../../layouts/Layout_Subpage.astro";
 
 import { useTranslations } from "../../i18n/utils";
 
@@ -11,8 +11,8 @@ const { lang } = Astro.params;
 const t = useTranslations(lang as "en" | "fr");
 ---
 
-<Layout title={t("home.title")}>
+<Layout_Subpage title={t("home.title") as string}>
   <main class="h-full w-full flex items-center justify-center z-10 absolute">
 
   </main>
-</Layout>
+</Layout_Subpage>

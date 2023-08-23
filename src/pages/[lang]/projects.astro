@@ -11,7 +11,7 @@ const { lang } = Astro.params;
 const t = useTranslations(lang as "en" | "fr");
 ---
 
-<Layout title={t("home.title")}>
+<Layout title={t("home.title") as string}>
   <main class="h-full w-full flex items-center justify-center z-10 absolute">
     <div>test</div>
   </main>

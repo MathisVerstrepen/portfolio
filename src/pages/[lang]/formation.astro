@@ -1,7 +1,8 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import { Icon } from "astro-icon";
+import Layout_Subpage from "../../layouts/Layout_Subpage.astro";
+import LevelIndicator from "../../components/LevelIndicator.astro";
 
+import { Icon } from "astro-icon";
 import { useTranslations } from "../../i18n/utils";
 
 export function getStaticPaths() {
@@ -10,27 +11,35 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 
 const t = useTranslations(lang as "en" | "fr");
+
+type categories = "web" | "database" | "general" | "devops" | "other";
+
+const createArrayFromNumber = (n: number) => {
+  return Array.from(Array(n).keys()).map((n: number) => n + 1);
+};
 ---
 
-<Layout title={t("home.title")}>
-  <main class="h-full w-full z-10 absolute flex">
-    <section class="w-1/3 h-full grid grid-rows-[10%_90%] grid-cols-[100%] p-10">
+<Layout_Subpage title={t("home.title") as string}>
+  <main
+    class="h-full w-full z-10 absolute flex space-x-28 px-10 pt-12"
+  >
+    <section class="max-w-[38vw] shrink-0 h-full grid grid-rows-[10%_90%] grid-cols-[fit-content(200%)] p-10">
       <h1 class="text-ghost_white font-ClashDisplay-Semibold text-3xl self-center">{t("formation.academic.title")}</h1>
-      <div class="grid grid-flow-row grid-rows-[fit-content(100%)] grid-cols-[10%_80%] h-fit">
+      <div class="grid grid-flow-row grid-rows-[fit-content(200%)] grid-cols-[10%_90%] h-fit w-fit">
         {
           [1, 2, 3].map((n: number) => {
             return (
               <>
                 <div class="h-full w-6 flex flex-col items-center">
-                    <span class="h-6 w-6 shrink-0 bg-ghost_white bg-opacity-10 border-ghost_white border-opacity-50 border-2 rounded-full" />
-                    { n < 3 && <span class="w-1 h-full bg-ghost_white bg-opacity-50"></span>}    
+                  <span class="h-6 w-6 shrink-0 bg-ghost_white bg-opacity-10 border-ghost_white border-opacity-50 border-2 rounded-full" />
+                  {n < 3 && <span class="w-[2px] h-full bg-ghost_white bg-opacity-50" />}
                 </div>
-                
+
                 <div class="mb-5">
                   <div class="text-scarlet font-ClashDisplay-Semibold text-xl">
                     {t(`formation.academic.year.${n as 1 | 2 | 3}`)}
                   </div>
-                  <div class="bg-ghost_white bg-opacity-[0.033] border-radial-box p-5 border-4 rounded-tl-none mt-2">
+                  <div class="bg-ghost_white bg-opacity-[0.033] py-5 px-6 mt-2 border-radial-school rounded-xl">
                     <h2 class="text-ghost_white font-ClashDisplay-Semibold text-2xl">
                       {t(`formation.academic.place.${n as 1 | 2 | 3}`)}
                     </h2>
@@ -49,30 +58,96 @@ const t = useTranslations(lang as "en" | "fr");
         }
       </div>
     </section>
-    <section class="w-1/3 h-full grid grid-rows-[10%_90%] p-10">
-        <h1 class="text-ghost_white font-ClashDisplay-Semibold text-3xl self-center">{t("formation.lang.title")}</h1>
-        <div class="flex flex-col mt-10">
-            {
-                [1, 2, 3].map((n: number) => {
-                return (
-                    <div class="mb-10 flex flex-col space-y-4">
-                        <div class="flex space-x-4">
-                            <Icon name={t(`formation.lang.${n as 1 | 2 | 3}.icon`)} class="h-7 rounded" />
-                            <h3 class="font-ClashDisplay-Semibold text-ghost_white text-xl">{t(`formation.lang.${n as 1 | 2 | 3}`)}</h3>                        
-                        </div>
+    <section class="max-w-[33vw] shrink-0 h-full grid grid-rows-[10%_90%] p-10">
+      <h1 class="text-ghost_white font-ClashDisplay-Semibold text-3xl self-center">{t("formation.lang.title")}</h1>
+      <div class="flex flex-col mt-10">
+        {
+          [1, 2, 3].map((n: number) => {
+            return (
+              <div class="mb-10 flex flex-col space-y-4">
+                <div class="flex space-x-4">
+                  <Icon name={t(`formation.lang.${n as 1 | 2 | 3}.icon`)} class="h-7 rounded" />
+                  <h3 class="font-ClashDisplay-Semibold text-ghost_white text-xl">
+                    {t(`formation.lang.${n as 1 | 2 | 3}`)}
+                  </h3>
+                </div>
 
-                        <div>
-                            <div class="font-ClashDisplay-Regular text-ghost_white" set:html={t(`formation.lang.${n as 1 | 2 | 3}.desc1`)}/>
-                            <ul class="font-ClashDisplay-Regular text-ghost_white ml-6" set:html={t(`formation.lang.${n as 2}.desc2`)}/>                            
-                        </div>
+                <div>
+                  <div
+                    class="font-ClashDisplay-Regular text-ghost_white"
+                    set:html={t(`formation.lang.${n as 1 | 2 | 3}.desc1`)}
+                  />
+                  <ul
+                    class="font-ClashDisplay-Regular text-ghost_white ml-6"
+                    set:html={t(`formation.lang.${n as 2}.desc2`)}
+                  />
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </section>
+
+    <section class="w-fit p-10 grid grid-rows-[10%_90%]">
+      <h1 class="text-ghost_white font-ClashDisplay-Semibold text-3xl self-center">Tech Stack</h1>
+      <div class="flex flex-row space-x-20 mt-10">
+        {
+          (t("tech.categories") as categories[]).map((category: categories) => {
+            return (
+              <div class="flex flex-col w-80">
+                <h3 class="font-ClashDisplay-Semibold text-ghost_white text-2xl mr-10 opacity-50">
+                  {t(`tech.${category}.title`)}
+                </h3>
+                {createArrayFromNumber(t(`tech.${category}.number`) as number).map((n: number) => {
+                  return (
+                    <div class="flex flex-row items-center bg-ghost_white bg-opacity-5 border-radial-tech p-4 mt-4 rounded-3xl h-14">
+                      <Icon name={"tech/" + t(`tech.${category}.${n}.icon`)} class="mr-4 text-ghost_white h-8 w-8" />
+                      <span class="font-ClashDisplay-Semibold text-ghost_white text-lg">
+                        {t(`tech.${category}.${n}.title`)}
+                      </span>
+                      <LevelIndicator technoLevel={t(`tech.${category}.${n}.level`) as string} />
                     </div>
-                );
-                })
-            }            
-        </div>
-
+                  );
+                })}
+              </div>
+            );
+          })
+        }
+      </div>
     </section>
   </main>
-</Layout>
+</Layout_Subpage>
 
-<style></style>
+<style>
+  .border-radial-tech, .border-radial-school {
+    position: relative;
+    z-index: 0;
+  }
+
+  .border-radial-tech:before {
+    border-radius: 16px;
+    background: radial-gradient(rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 35%, rgba(255, 255, 255, 0) 100%);
+    background-size: 320px 320px;
+    background-position: center;
+  }
+
+  .border-radial-school:before {
+      border-radius: 0 12px 12px 12px;
+      background: radial-gradient(rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 35%, rgba(255, 255, 255, 0) 100%);
+      background-size: 320px 320px;
+      background-position: -500% 100%;
+  }
+
+  .border-radial-tech:before, .border-radial-school:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    padding: 3px;
+    
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+</style>

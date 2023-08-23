@@ -1,11 +1,16 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
 
+import ContactBox from "../components/QuickActionBox.astro";
+
 interface Props {
 	title: string;
 }
 
 const { title } = Astro.props;
+const { lang } = Astro.params;
+
+const currentPath = Astro.url.pathname;
 ---
 
 <!DOCTYPE html>
@@ -21,6 +26,7 @@ const { title } = Astro.props;
         <ViewTransitions />
 	</head>
 	<body class="bg-black absolute h-screen w-screen overflow-hidden m-0 p-0" transition:animate="morph">
+        {currentPath !== `/${lang}/` && <ContactBox />}
         <slot />
         <img src="/noise-min.png" alt="noise" class="absolute h-full w-full object-fill pointer-events-none opacity-50 z-0">
         <span id="circle1" class="h-full w-full -translate-x-1/2 absolute opacity-20 z-0"></span>

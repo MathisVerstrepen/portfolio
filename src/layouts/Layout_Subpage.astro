@@ -1,0 +1,90 @@
+---
+import Icon from "astro-icon";
+import { ViewTransitions } from "astro:transitions";
+
+import QuickActionBox from "../components/QuickActionBox.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const { lang } = Astro.params;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="stylesheet" href="/style/fonts.css" />
+    <title>{title}</title>
+    <script>
+      import "../scripts/astroScrollModule.js";
+    </script>
+    <ViewTransitions />
+  </head>
+  <body class="bg-black absolute h-screen w-screen overflow-hidden m-0 p-0" transition:animate="morph">
+    <a
+      class="absolute top-10 left-12 flex items-center opacity-50 group hover:opacity-80 duration-300 h-8 w-28 z-50"
+      role="button"
+      href=`/${lang}/about`
+    >
+      <Icon name="chevrons-left" class="h-8 w-12 text-ghost_white" />
+      <p
+        class="font-ClashDisplay-Semibold text-ghost_white text-xl transform translate-x-4 group-hover:translate-x-0 transition-transform duration-300"
+      >
+        Back
+      </p>
+    </a>
+
+    <QuickActionBox />
+
+    <astro-scroll class="absolute h-full w-full overflow-x-scroll hide-scrollbar" id="horizontal_scroll">
+      <slot />
+    </astro-scroll>
+
+    <img
+      src="/noise-min.png"
+      alt="noise"
+      class="absolute h-full w-full object-fill pointer-events-none opacity-50 z-0"
+    />
+    <span id="circle1" class="h-full w-full -translate-x-1/2 absolute opacity-20 z-0"></span>
+    <span id="circle2" class="h-2/3 w-full translate-y-full absolute opacity-10 z-0"></span>
+    <style is:global>
+      #circle1 {
+        background: radial-gradient(#ff331f, transparent 70%);
+      }
+      #circle2 {
+        background: radial-gradient(#1faeff, transparent 70%);
+      }
+
+      .border-radial-box {
+        border-style: solid;
+        border-width: 4px;
+        border-image: radial-gradient(rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 105%) 1;
+        border-radius: 10px;
+      }
+
+      li {
+        list-style-type: disc;
+      }
+
+      small {
+        opacity: 0.75;
+      }
+
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </body>
+</html>
