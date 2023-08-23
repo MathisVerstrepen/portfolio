@@ -9,10 +9,53 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 
 const t = useTranslations(lang as "en" | "fr");
+
+type Experience = {
+  enterprise: string;
+  year: string;
+  duration: string;
+  type: string;
+  img: string;
+  desc1: string;
+  desc2: string;
+  tasks: string[];
+};
 ---
 
 <Layout_Subpage title={t("home.title") as string}>
-  <main class="h-full w-full flex items-center justify-center z-10 absolute">
+  <main class="h-full w-full flex z-10 absolute px-10 pt-12">
+    <div class="shrink-0 h-full grid grid-rows-[10%_90%] grid-cols-[fit-content(200%)] p-10">
+      <h1 class="font-ClashDisplay-Semibold text-ghost_white text-3xl self-center">{t("experience.title")}</h1>
+      <div class="flex space-x-28">
+        {
+          (t("experience.list") as readonly any[]).map((experience: Experience) => {
+            return (
+              <div class="flex flex-col w-96 space-y-5">
+                <div>
+                  <h3 class="font-ClashDisplay-Semibold text-ghost_white">{experience.enterprise}</h3>
+                  <p class="font-ClashDisplay-Regular text-ghost_white">
+                    <span class="text-scarlet">{experience.duration}</span> {experience.type}
+                  </p>
+                </div>
 
+                <p class="font-ClashDisplay-Regular text-ghost_white">{experience.desc1}</p>
+
+                <ul class="pl-4">
+                {
+                  experience.tasks.map((task) => {
+                    return (<li class="font-ClashDisplay-Regular text-ghost_white">
+                      {task}
+                    </li>)
+                  })
+                }
+                </ul>
+
+                <p class="font-ClashDisplay-Regular text-ghost_white">{experience.desc2}</p>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
   </main>
 </Layout_Subpage>

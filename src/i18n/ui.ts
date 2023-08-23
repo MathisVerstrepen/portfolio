@@ -10,6 +10,9 @@ import { formation_academic_fr, formation_lang_fr } from "./lang/fr/formation";
 import { tech_en, tech_web_en, tech_database_en, tech_devops_en, tech_general_en, tech_other_en } from "./lang/en/tech_stack";
 import { tech_fr, tech_web_fr, tech_database_fr, tech_devops_fr, tech_general_fr, tech_other_fr } from "./lang/fr/tech_stack";
 
+import { experience_en } from "./lang/en/experience";
+import { experience_fr } from "./lang/fr/experience";
+
 export const languages = {
   en: "English",
   fr: "Français",
@@ -33,6 +36,8 @@ export const ui = {
     ...tech_devops_en,
     ...tech_general_en,
     ...tech_other_en,
+
+    ...experience_en,
   },
   fr: {
     ...home_fr,
@@ -49,5 +54,7 @@ export const ui = {
     ...tech_devops_fr,
     ...tech_general_fr,
     ...tech_other_fr,
+
+    ...experience_fr,
   },
 } as const;
