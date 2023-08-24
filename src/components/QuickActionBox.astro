@@ -4,6 +4,39 @@ import Icon from "astro-icon";
 const { lang } = Astro.params;
 ---
 
+<script type="module">
+  const langSwitcher = document.getElementById("lang-switcher");
+  const langSwitcherButton = document.getElementById("lang-switcher-button");
+
+  if (langSwitcherButton)
+    langSwitcherButton.addEventListener("click", () => {
+        console.log("click");
+      if (langSwitcher) langSwitcher.classList.toggle("hidden");
+    });
+
+  const langSwitcherFrance = document.getElementById("lang-switcher-france");
+  const langSwitcherEnglish = document.getElementById("lang-switcher-english");
+
+  if (langSwitcherFrance)
+    langSwitcherFrance.addEventListener("click", () => {
+      const currentPath = window.location.pathname;
+      const lang = currentPath.split("/")[1];
+      if (lang === "fr") return;
+
+      const page = currentPath.split(`/${lang}/`)[1];
+      window.location.href = `/fr/${page}`;
+    });
+
+  if (langSwitcherEnglish)
+    langSwitcherEnglish.addEventListener("click", () => {
+      const currentPath = window.location.pathname;
+      const lang = currentPath.split("/")[1];
+      if (lang === "en") return;
+      const page = currentPath.split(`/${lang}/`)[1];
+      window.location.href = `/en/${page}`;
+    });
+</script>
+
 <div class="absolute top-10 right-12 flex items-center">
   <a
     class="font-ClashDisplay-Semibold text-ghost_white text-xl text-opacity-50 hover:text-opacity-80 duration-300 z-50"
@@ -13,5 +46,37 @@ const { lang } = Astro.params;
     contact
   </a>
   <span class="h-6 w-[2px] bg-ghost_white bg-opacity-50 rounded mx-8"></span>
-  <Icon name="world" class="h-6 w-6 text-ghost_white opacity-50 hover:opacity-80 duration-300 z-50" />
+  <Icon
+    name="world"
+    class="h-6 w-6 text-ghost_white opacity-50 hover:opacity-80 duration-300 z-50"
+    id="lang-switcher-button"
+  />
+
+  <div
+    class="absolute bg-ghost_white bg-opacity-10 h-fit w-full top-10 rounded-lg p-4 flex flex-col space-y-4 hidden z-50 backdrop-blur"
+    id="lang-switcher"
+  >
+    <div
+      class="flex items-center space-x-2 px-2 py-1 rounded-lg bg-ghost_white bg-opacity-0 hover:bg-opacity-10 duration-300"
+      id="lang-switcher-france"
+    >
+      <Icon name="flag-france" class="h-6 w-6" />
+      <label
+        for="lang-switcher-france"
+        class="font-ClashDisplay-Semibold text-ghost_white text-lg hover:text-opacity-80 duration-300 z-50 select-none"
+        >Francais</label
+      >
+    </div>
+    <div
+      class="flex items-center space-x-2 px-2 py-1 rounded-lg bg-ghost_white bg-opacity-0 hover:bg-opacity-10 duration-300"
+      id="lang-switcher-english"
+    >
+      <Icon name="flag-united-kingdom" class="h-6 w-6" />
+      <label
+        for="lang-switcher-france"
+        class="font-ClashDisplay-Semibold text-ghost_white text-lg hover:text-opacity-80 duration-300 z-50 select-none"
+        >English</label
+      >
+    </div>
+  </div>
 </div>
