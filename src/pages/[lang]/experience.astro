@@ -24,30 +24,49 @@ type Experience = {
 
 <Layout_Subpage title={t("home.title") as string}>
   <main class="h-full w-full flex z-10 absolute px-10 pt-12">
-    <div class="shrink-0 h-full grid grid-rows-[10%_90%] grid-cols-[fit-content(200%)] p-10">
+    <div class="shrink-0 h-full grid grid-rows-[10%_10%_80%] grid-cols-[fit-content(200%)] p-10">
       <h1 class="font-ClashDisplay-Semibold text-ghost_white text-3xl self-center">{t("experience.title")}</h1>
+      <div class="flex space-x-28">
+        {
+          (t("experience.list") as readonly any[]).map((experience: Experience, index: number) => {
+            return (
+              <div class="w-[35rem] flex flex-col justify-evenly items-center">
+                <span class="h-5 w-5 bg-ghost_white bg-opacity-10 border-2 border-ghost_white border-opacity-50 rounded-full relative">
+                  {index !== (t("experience.list") as readonly any[]).length - 1 && (
+                    <span class="h-[2px] w-[40.75rem] bg-ghost_white bg-opacity-50 absolute translate-y-[6px] translate-x-[18px]" />
+                  )}
+                </span>
+                <label class="font-ClashDisplay-Semibold text-scarlet text-xl">{experience.year}</label>
+              </div>
+            );
+          })
+        }
+      </div>
       <div class="flex space-x-28">
         {
           (t("experience.list") as readonly any[]).map((experience: Experience) => {
             return (
-              <div class="flex flex-col w-96 space-y-5">
-                <div>
-                  <h3 class="font-ClashDisplay-Semibold text-ghost_white">{experience.enterprise}</h3>
-                  <p class="font-ClashDisplay-Regular text-ghost_white">
-                    <span class="text-scarlet">{experience.duration}</span> {experience.type}
-                  </p>
+              <div class="flex flex-col w-[35rem] space-y-5 bg-ghost_white bg-opacity-5 p-8 h-fit rounded-xl border-radial-experience">
+                <div class="flex justify-between space-x-1 mb-4">
+                  <div>
+                    <h3 class="font-ClashDisplay-Semibold text-ghost_white">{experience.enterprise}</h3>
+                    <p class="font-ClashDisplay-Regular text-ghost_white">
+                      <span class="text-scarlet">{experience.duration}</span> {experience.type}
+                    </p>
+                  </div>
+                  <img
+                    src={"/img/" + experience.img}
+                    alt={experience.enterprise}
+                    class="w-28 h-12 object-cover rounded-xl crisp-edges"
+                  />
                 </div>
 
                 <p class="font-ClashDisplay-Regular text-ghost_white">{experience.desc1}</p>
 
                 <ul class="pl-4">
-                {
-                  experience.tasks.map((task) => {
-                    return (<li class="font-ClashDisplay-Regular text-ghost_white">
-                      {task}
-                    </li>)
-                  })
-                }
+                  {experience.tasks.map((task) => {
+                    return <li class="font-ClashDisplay-Regular text-ghost_white mb-1">{task}</li>;
+                  })}
                 </ul>
 
                 <p class="font-ClashDisplay-Regular text-ghost_white">{experience.desc2}</p>
@@ -59,3 +78,30 @@ type Experience = {
     </div>
   </main>
 </Layout_Subpage>
+
+<style>
+  .crisp-edges {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  .border-radial-experience {
+    position: relative;
+    z-index: 0;
+  }
+
+  .border-radial-experience:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    padding: 3px;
+    border-radius: 12px;
+    background: radial-gradient(rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 35%, rgba(255, 255, 255, 0) 100%);
+    background-size: 100% 100%, 100% 100%;
+    background-position: center;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+</style>

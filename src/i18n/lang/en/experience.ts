@@ -7,7 +7,7 @@ export const experience_en = {
 			year: "2023",
       duration: "3 months",
       type: "training internship",
-      img: "acteam-it.png",
+      img: "acteam-it.webp",
       desc1:
         "During my internship at ACTEAM-IT, a renowned IT expertise firm based in Roubaix, I had the opportunity to play a significant role in designing and developing an internal application dedicated to contract budget management. \
             My main responsibilities as a React web developer included:",
@@ -25,7 +25,7 @@ export const experience_en = {
 			year: "2021",
 			duration: "1 month",
 			type: "determination internship",
-			img: "cambrai.png",
+			img: "cambrai.webp",
 			desc1:
 			"I had the privilege of undertaking a pivotal internship within the IT department of Cambrai City Hall. During this tenure, I was immersed in the city's IT operations, playing a vital role in maintaining and evolving Cambrai's IT infrastructure. \
 			My core responsibilities encompassed:"
@@ -44,7 +44,7 @@ export const experience_en = {
 			year: "2019",
 			duration: "15 days",
 			type: "discovery internship",
-			img: "cambrai.png",
+			img: "cambrai.webp",
 			desc1: "I had the opportunity to undertake a 15-day discovery internship within the IT department of Cambrai City Hall. Although brief, this experience offered me an initial immersion into the realm of municipal IT.\
 			During this observational period, my activities included:",
 			desc2: "This discovery internship served as a valuable introduction to the IT challenges faced by a municipality and set the stage for my subsequent in-depth internship at Cambrai.",

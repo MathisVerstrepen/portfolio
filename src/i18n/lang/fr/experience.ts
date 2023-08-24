@@ -7,7 +7,7 @@ export const experience_fr = {
       year: "2023",
       duration: "3 mois",
       type: "stage de formation",
-      img: "acteam-it.png",
+      img: "acteam-it.webp",
       desc1:
         "Au cours de mon stage chez ACTEAM-IT, une entreprise réputée spécialisée dans l'expertise IT située à Roubaix, j'ai eu l'opportunité de participer activement à la conception et au développement d'une application interne dédiée à la gestion de budget de contrats. \
           Mon rôle principal en tant que développeur web React consistait à :",
@@ -25,7 +25,7 @@ export const experience_fr = {
       year: "2021",
       duration: "1 mois",
       type: "stage de détermination",
-      img: "cambrai.png",
+      img: "cambrai.webp",
       desc1:
         "J'ai eu le privilège d'effectuer un stage déterminant au sein du service informatique de la mairie de la ville de Cambrai. Durant cette expérience, j'ai été plongé au cœur des opérations informatiques municipales, jouant un rôle essentiel dans le maintien et l'évolution de l'infrastructure IT de la ville.\
         Mes principales missions ont inclus :",
@@ -43,7 +43,7 @@ export const experience_fr = {
       year: "2019",
       duration: "15 jours",
       type: "stage de découverte",
-      img: "cambrai.png",
+      img: "cambrai.webp",
       desc1:
         "J'ai eu l'opportunité de réaliser un stage de découverte de 15 jours au sein du service informatique de la mairie de Cambrai. Bien que bref, ce stage m'a permis d'obtenir une première immersion dans le monde de l'informatique municipal.\
         Durant cette période d'observation, mes activités ont été les suivantes :",
