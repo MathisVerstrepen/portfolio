@@ -1,5 +1,6 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import Icon from "astro-icon";
+import Layout_Subpage from "../../layouts/Layout_Subpage.astro";
 
 import { useTranslations } from "../../i18n/utils";
 
@@ -9,10 +10,142 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 
 const t = useTranslations(lang as "en" | "fr");
+
+interface PersonalProject {
+  title: string;
+  desc: string;
+  img: string[];
+  tags: string[];
+  links: {
+    name: string;
+    url: string;
+    icon: string;
+  }[];
+}
 ---
 
-<Layout title={t("home.title") as string}>
-  <main class="h-full w-full flex items-center justify-center z-10 absolute">
-    <div>test</div>
+<Layout_Subpage title={t("home.title") as string}>
+  <main class="h-full w-full flex z-10 absolute px-10 pt-12">
+    <div class="shrink-0 h-full grid grid-rows-[10%_90%] grid-cols-[fit-content(200%)] p-10">
+      <h1 class="font-ClashDisplay-Semibold text-ghost_white text-3xl self-center">{t("projects_perso.title")}</h1>
+      <div class="flex space-x-24">
+        {
+          (t("projects_perso.list") as readonly any[]).map((project: PersonalProject) => {
+            return (
+              <div class="flex flex-col w-[35rem] space-y-16 bg-ghost_white bg-opacity-5 p-8 h-fit rounded-xl border-radial-project">
+                <div>
+                  <h3 class="font-ClashDisplay-Semibold text-scarlet text-4xl uppercase mb-2">{project.title}</h3>
+                  <p class="font-ClashDisplay-Regular text-ghost_white mb-2">{project.desc}</p>
+                  <div class="flex flex-row space-x-2">
+                    {project.tags.map((tag) => {
+                      return (
+                        <span class="font-ClashDisplay-Regular text-sm text-ghost_white bg-ghost_white bg-opacity-5 px-4 py-1 rounded-[20px]">
+                          {tag}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+                <img
+                  src={"/img/" + project.img[0]}
+                  alt={project.title + " image 1"}
+                  class="w-full h-fit object-cover rounded-xl crisp-edges"
+                />
+                <div class="flex flex-row items-center justify-center space-x-4">
+                  {project.links.map((link) => {
+                    return (
+                      <a
+                        class="flex flex-row space-x-2 items-center bg-gradient-to-r from-ghost_white via-[rgba(251,251,255,0.2)] to-[rgba(251,251,255,0)] bg-pos-0 hover:bg-pos-50 bg-size-200 duration-300 w-fit px-12 py-2 rounded-[20px] border-radial-button"
+                        role="button"
+                        href={link.url}
+                        target="_blank"
+                      >
+                        <Icon name={link.icon} class="w-5 h-5 text-licorice" />
+                        <p class="font-ClashDisplay-Medium text-licorice">{link.name}</p>
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+    <div class="shrink-0 h-full grid grid-rows-[10%_90%] grid-cols-[fit-content(200%)] p-10 ml-10">
+        <h1 class="font-ClashDisplay-Semibold text-ghost_white text-3xl self-center">{t("school_projects.title")}</h1>
+        <div class="flex space-y-10 flex-col">
+          {
+            (t("school_projects.list") as readonly any[]).map((project: PersonalProject) => {
+              return (
+                <div class="flex flex-col w-[35rem] space-y-10 bg-ghost_white bg-opacity-5 p-8 h-fit rounded-xl border-radial-project">
+                  <div>
+                    <h3 class="font-ClashDisplay-Semibold text-scarlet text-3xl mb-2">{project.title}</h3>
+                    <p class="font-ClashDisplay-Regular text-ghost_white mb-2">{project.desc}</p>
+                  </div>
+                  <div class="flex flex-row items-center justify-center space-x-4">
+                    {project.links.map((link) => {
+                      return (
+                        <a
+                          class="flex flex-row space-x-2 items-center bg-gradient-to-r from-ghost_white via-[rgba(251,251,255,0.2)] to-[rgba(251,251,255,0)] bg-pos-0 hover:bg-pos-50 bg-size-200 duration-300 w-fit px-12 py-2 rounded-[20px] border-radial-button"
+                          role="button"
+                          href={link.url}
+                          target="_blank"
+                        >
+                          <Icon name={link.icon} class="w-5 h-5 text-licorice" />
+                          <p class="font-ClashDisplay-Medium text-licorice">{link.name}</p>
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })
+          }
+        </div>
+      </div>
   </main>
-</Layout>
+</Layout_Subpage>
+
+<style>
+  .crisp-edges {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  .border-radial-project,
+  .border-radial-button {
+    position: relative;
+    z-index: 0;
+  }
+
+  .border-radial-project:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    padding: 3px;
+    border-radius: 12px;
+    background: radial-gradient(rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 35%, rgba(255, 255, 255, 0) 100%);
+    background-size: 100% 100%, 100% 100%;
+    background-position: center;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+
+  .border-radial-button:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    padding: 2px;
+    border-radius: 20px;
+    background: radial-gradient(rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.65) 50%, rgba(255, 255, 255, 0) 90%);
+    background-size: 100% 200%, 100% 100%;
+    background-position: -10% 100%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+</style>

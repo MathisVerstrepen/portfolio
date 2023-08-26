@@ -11,6 +11,14 @@ module.exports = {
                 scarlet: "#FF331F",
                 red_error: "#CC0000",
             },
+            backgroundSize: {
+                'size-200': '200% 200%',
+            },
+            backgroundPosition: {
+                'pos-0': '0% 0%',
+                'pos-50': '20% 20%',
+                'pos-100': '100% 100%',
+            },
         },
         fontFamily: {
             'ClashDisplay-Variable': ['ClashDisplay-Variable', 'sans-serif'],
