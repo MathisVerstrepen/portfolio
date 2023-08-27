@@ -29,6 +29,11 @@ module.exports = {
             'ClashDisplay-Semibold': ['ClashDisplay-Semibold', 'sans-serif'],
             'ClashDisplay-Bold': ['ClashDisplay-Bold', 'sans-serif'],
         },
+        screens: {
+            'sm': '576px',
+            'md': '960px',
+            'lg': '1440px',
+          },
 	},
 	plugins: [],
 }

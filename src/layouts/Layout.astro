@@ -1,59 +1,75 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ViewTransitions } from "astro:transitions";
+import { useTranslations } from "../i18n/utils";
 
 import ContactBox from "../components/QuickActionBox.astro";
 
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
 const { lang } = Astro.params;
 
 const currentPath = Astro.url.pathname;
+
+const t = useTranslations(lang as "en" | "fr");
 ---
 
-<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description">
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-        <link rel="stylesheet" href="/style/fonts.css">
-		<title>{title}</title>
-        <ViewTransitions />
-	</head>
-	<body class="bg-black absolute h-screen w-screen overflow-hidden m-0 p-0" transition:animate="morph">
-        {currentPath !== `/${lang}/` && <ContactBox />}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="stylesheet" href="/style/fonts.css" />
+    <title>{title}</title>
+    <ViewTransitions />
+    
+  </head>
+  <body class="bg-black absolute h-screen w-screen overflow-hidden m-0 p-0" transition:animate="morph">
+    {currentPath !== `/${lang}/` && currentPath !== `/contact` && <ContactBox />}
+    <div class="absolute top-0 left-0 w-full h-full flex justify-center items-center z-10 md:hidden ">
+        <ContactBox />
+        <p class="font-ClashDisplay-Semibold text-3xl text-ghost_white w-2/3 text-center">
+        {t("size-warning")}
+        </p>
+    </div>
+    
+    <div class="hidden md:block">
         <slot />
-        <img src="/noise-min.png" alt="noise" class="absolute h-full w-full object-fill pointer-events-none opacity-50 z-0">
-        <span id="circle1" class="h-full w-full -translate-x-1/2 absolute opacity-20 z-0"></span>
-        <span id="circle2" class="h-2/3 w-full translate-y-full absolute opacity-10 z-0"></span>
-	</body>
+    </div>
+    <img
+      src="/noise-min.png"
+      alt="noise"
+      class="absolute h-full w-full object-fill pointer-events-none opacity-50 z-0"
+      loading="lazy"
+    />
+    <span id="circle1" class="h-full w-full -translate-x-1/2 absolute opacity-20 z-0"></span>
+    <span id="circle2" class="h-2/3 w-full translate-y-full absolute opacity-10 z-0"></span>
+  </body>
+  <style is:global>
+    #circle1 {
+      background: radial-gradient(#ff331f, transparent 70%);
+    }
+    #circle2 {
+      background: radial-gradient(#1faeff, transparent 70%);
+    }
+
+    .border-radial-box {
+      border-style: solid;
+      border-width: 4px;
+      border-image: radial-gradient(rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 105%) 1;
+      border-radius: 10px;
+    }
+
+    li {
+      list-style-type: disc;
+    }
+
+    small {
+      opacity: 0.75;
+    }
+  </style>
 </html>
-
-<style is:global>
-#circle1 {
-    background: radial-gradient(#FF331F, transparent 70%);
-}
-#circle2 {
-    background: radial-gradient(#1FAEFF, transparent 70%);
-}
-
-.border-radial-box {
-border-style: solid;
-border-width: 4px;
-border-image: radial-gradient(rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 105%) 1;
-border-radius: 10px;
-}
-
-li {
-    list-style-type: disc;
-}
-
-small {
-    opacity: 0.75;
-}
-</style>

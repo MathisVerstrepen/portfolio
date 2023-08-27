@@ -25,6 +25,8 @@ export const defaultLang = "en";
 
 export const ui = {
   en: {
+    "size-warning": "This site is not yet optimized for small screens.",
+
     ...home_en,
 
     ...about_en,
@@ -46,6 +48,8 @@ export const ui = {
     ...school_projects_en,
   },
   fr: {
+    "size-warning": "Ce site n'est pas encore optimisé pour les écrans de petite taille.",
+
     ...home_fr,
 
     ...about_fr,
