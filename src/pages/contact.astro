@@ -1,7 +1,10 @@
 ---
 import Layout from "../layouts/Layout_Contact.astro";
+import { Image } from 'astro:assets';
 
 import Icon from "astro-icon";
+
+import meImage from "../assets/me.webp";
 ---
 
 <script>
@@ -36,11 +39,12 @@ import Icon from "astro-icon";
     <div
       class="h-fit w-fit max-w-[90vw] bg-ghost_white bg-opacity-[0.060] border-radial-contact flex flex-col items-center justify-start py-10 md:py-16 px-10 md:px-28 rounded-[20px]"
     >
-      <img
-        src="/img/me.webp"
+      <Image
+        src={meImage}
+        height={256}
+        width={256}
         alt="Mathis Verstrepen Photo"
         class="h-24 w-24 md:h-32 md:w-32 rounded-full"
-        loading="lazy"
       />
 
       <div class="flex items-center justify-center flex-col mt-5">

@@ -1,6 +1,7 @@
 ---
 import Icon from "astro-icon";
 import Layout_Subpage from "../../layouts/Layout_Subpage.astro";
+import { Image } from 'astro:assets';
 
 import { useTranslations } from "../../i18n/utils";
 
@@ -50,6 +51,7 @@ interface PersonalProject {
                   src={"/img/" + project.img[0]}
                   alt={project.title + " image 1"}
                   class="w-full h-fit object-cover rounded-xl crisp-edges"
+                  loading="lazy"
                 />
                 <div class="flex flex-row items-center justify-center space-x-4">
                   {project.links.map((link) => {
