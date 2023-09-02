@@ -1,0 +1,29 @@
+{
+    "_meta": {
+        "deployService": "ApolloLaunch",
+        "deployServiceVersion": "1.0.0"
+    },
+    "config": {
+      "repository": {
+        "owner": "Mathis Verstrepen",
+        "name": "Portfolio"
+      },
+      
+      "docker": {
+        "imageName": "portfolio",
+        "imageTag": "1.0.0",
+        "dockerfileLocation": "dionysos.dockerfile",
+        "buildArgs": [
+          "SUPABASE_URL=${{ secrets.SUPABASE_URL }}",
+          "SUPABASE_KEY=${{ secrets.SUPABASE_KEY }}"
+        ],
+        "composeFile": "dionysos-compose.yml"
+      },
+      
+      "deploy": {
+        "strategy": "all-at-once"
+      },
+      
+      "environment": "dev"
+    }
+  }
