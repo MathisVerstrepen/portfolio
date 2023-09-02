@@ -3,7 +3,7 @@ version: "3.1"
 services:
   portfolio:
     container_name: portfolio
-    image: registry.diikstra.fr/portfolio:latest
+    image: registry.diikstra.fr/portfolio:${IMAGE_TAG}
     restart: always
     ports:
       - "8090:8080"
