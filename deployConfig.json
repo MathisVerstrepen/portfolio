@@ -12,12 +12,9 @@
       "docker": {
         "imageName": "portfolio",
         "imageTag": "1.0.0",
-        "dockerfileLocation": "dionysos.dockerfile",
-        "buildArgs": [
-          "SUPABASE_URL=${{ secrets.SUPABASE_URL }}",
-          "SUPABASE_KEY=${{ secrets.SUPABASE_KEY }}"
-        ],
-        "composeFile": "dionysos-compose.yml"
+        "dockerfileLocation": "portfolio.dockerfile",
+        "buildArgs": [],
+        "composeFile": "portfolio-compose.yml"
       },
       
       "deploy": {
