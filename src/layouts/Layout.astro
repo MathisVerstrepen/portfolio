@@ -31,7 +31,6 @@ const t = useTranslations(lang as "en" | "fr");
   <body class="bg-black absolute h-screen w-screen overflow-hidden m-0 p-0" transition:animate="morph">
     {currentPath !== `/${lang}/` && currentPath !== `/contact` && <ContactBox />}
     <div class="absolute top-0 left-0 w-full h-full flex justify-center items-center z-10 md:hidden ">
-        <ContactBox />
         <p class="font-ClashDisplay-Semibold text-3xl text-ghost_white w-2/3 text-center">
         {t("size-warning")}
         </p>
