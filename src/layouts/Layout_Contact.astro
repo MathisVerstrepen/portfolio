@@ -19,7 +19,7 @@ const { title } = Astro.props;
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body class="bg-black absolute h-screen w-screen overflow-hidden m-0 p-0" transition:animate="morph">
+  <body class="bg-black absolute h-full w-screen overflow-hidden m-0 p-0" transition:animate="morph">
     <slot />
     <img
       src="/noise-min.png"
