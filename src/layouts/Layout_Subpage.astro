@@ -16,7 +16,9 @@ const { lang } = Astro.params;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content={
+        lang === "fr" ? "Portfolio de Mathis Verstrepen, étudiant en Computer Science spécialisé en développement web. Découvrez mes projets, compétences et réalisations dans le domaine de l'informatique et du web." :
+        "Portfolio of Mathis Verstrepen, a Computer Science student specializing in web development. Explore my projects, skills, and achievements in the field of computer science and web."}>
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
