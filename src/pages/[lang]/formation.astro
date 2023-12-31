@@ -2,7 +2,7 @@
 import Layout_Subpage from "../../layouts/Layout_Subpage.astro";
 import LevelIndicator from "../../components/LevelIndicator.astro";
 
-import { Icon } from "astro-icon";
+import { Icon } from 'astro-icon/components'
 import { useTranslations } from "../../i18n/utils";
 
 export function getStaticPaths() {
@@ -102,7 +102,7 @@ const createArrayFromNumber = (n: number) => {
                 {createArrayFromNumber(t(`tech.${category}.number`) as number).map((n: number) => {
                   return (
                     <div class="flex flex-row items-center bg-ghost_white bg-opacity-5 border-radial-tech p-4 mt-4 rounded-3xl h-14">
-                      <Icon name={"tech/" + t(`tech.${category}.${n}.icon`)} class="mr-4 text-ghost_white h-8 w-8" />
+                      <Icon name={t(`tech.${category}.${n}.icon`)} class="mr-4 text-ghost_white h-8 w-8" />
                       <span class="font-ClashDisplay-Semibold text-ghost_white text-lg">
                         {t(`tech.${category}.${n}.title`)}
                       </span>

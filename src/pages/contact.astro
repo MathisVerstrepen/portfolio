@@ -2,9 +2,9 @@
 import Layout from "../layouts/Layout_Contact.astro";
 import { Image } from 'astro:assets';
 
-import Icon from "astro-icon";
+import { Icon } from 'astro-icon/components'
 
-import meImage from "../assets/me.webp";
+import meImage from "../assets/me.png";
 ---
 
 <script>
@@ -61,7 +61,7 @@ import meImage from "../assets/me.webp";
           href="mailto:contact@diikstra.fr"
           class="flex items-center bg-ghost_white bg-opacity-10 rounded-3xl py-2 w-56 justify-center hover:bg-opacity-5 duration-300 hover:scale-[0.98]"
         >
-          <Icon name="socials/mail-filled" class="h-5 w-5 mr-2 text-ghost_white" />
+          <Icon name="mail-filled" class="h-5 w-5 mr-2 text-ghost_white" />
           <p class="text-ghost_white font-ClashDisplay-Regular text-sm md:text-base">contact@diikstra.fr</p>
         </a>
 
@@ -70,7 +70,7 @@ import meImage from "../assets/me.webp";
           class="flex items-center bg-ghost_white bg-opacity-10 rounded-3xl py-2 w-56 justify-center hover:bg-opacity-5 duration-300 hover:scale-[0.98]"
           target="_blank"
         >
-          <Icon name="socials/app-window-filled" class="h-5 w-5 mr-2 text-ghost_white" />
+          <Icon name="app-window-filled" class="h-5 w-5 mr-2 text-ghost_white" />
           <p class="text-ghost_white font-ClashDisplay-Regular text-sm md:text-base">Portfolio</p>
         </a>
 
@@ -79,7 +79,7 @@ import meImage from "../assets/me.webp";
           class="flex items-center bg-ghost_white bg-opacity-10 rounded-3xl py-2 w-56 justify-center hover:bg-opacity-5 duration-300 hover:scale-[0.98]"
           target="_blank"
         >
-          <Icon name="socials/linkedin-icon" class="h-5 w-5 mr-2 text-ghost_white" />
+          <Icon name="linkedin-icon" class="h-5 w-5 mr-2 text-ghost_white" />
           <p class="text-ghost_white font-ClashDisplay-Regular text-sm md:text-base">LinkedIn</p>
         </a>
 
@@ -88,7 +88,7 @@ import meImage from "../assets/me.webp";
           class="flex items-center bg-ghost_white bg-opacity-10 rounded-3xl py-2 w-56 justify-center hover:bg-opacity-5 duration-300 hover:scale-[0.98]"
           target="_blank"
         >
-          <Icon name="socials/github-icon" class="h-5 w-5 mr-2 text-ghost_white" />
+          <Icon name="github-icon" class="h-5 w-5 mr-2 text-ghost_white" />
           <p class="text-ghost_white font-ClashDisplay-Regular text-sm md:text-base">Github</p>
         </a>
 
@@ -97,7 +97,7 @@ import meImage from "../assets/me.webp";
           class="flex items-center bg-ghost_white bg-opacity-10 rounded-3xl py-2 w-56 justify-center hover:bg-opacity-5 duration-300 hover:scale-[0.98]"
           target="_blank"
         >
-          <Icon name="socials/letterboxd" class="h-5 w-5 mr-2 text-ghost_white" />
+          <Icon name="letterboxd-icon" class="h-5 w-5 mr-2 text-ghost_white" />
           <p class="text-ghost_white font-ClashDisplay-Regular text-sm md:text-base">Letterboxd</p>
         </a>
 
@@ -106,7 +106,7 @@ import meImage from "../assets/me.webp";
           class="flex items-center bg-ghost_white bg-opacity-10 rounded-3xl py-2 w-56 justify-center hover:bg-opacity-5 duration-300 hover:scale-[0.98]"
           target="_blank"
         >
-          <Icon name="socials/twitter" class="h-5 w-5 mr-2 text-ghost_white" />
+          <Icon name="twitter" class="h-5 w-5 mr-2 text-ghost_white" />
           <p class="text-ghost_white font-ClashDisplay-Regular text-sm md:text-base">Twitter</p>
         </a>
 
@@ -115,7 +115,7 @@ import meImage from "../assets/me.webp";
           class="flex items-center bg-ghost_white bg-opacity-10 rounded-3xl py-2 w-56 justify-center hover:bg-opacity-5 duration-300 hover:scale-[0.98]"
           target="_blank"
         >
-          <Icon name="socials/discord-icon" class="h-5 w-5 mr-2 text-ghost_white" />
+          <Icon name="discord-icon" class="h-5 w-5 mr-2 text-ghost_white" />
           <p class="text-ghost_white font-ClashDisplay-Regular text-sm md:text-base">Discord</p>
         </a>
       </div>
