@@ -14,7 +14,8 @@
         "imageTag": "1.0.0",
         "dockerfileLocation": "portfolio.dockerfile",
         "buildArgs": [],
-        "composeFile": "portfolio-compose.yml"
+        "composeFile": "portfolio-compose.yml",
+        "host": "hogwarts-3"
       },
       
       "deploy": {
